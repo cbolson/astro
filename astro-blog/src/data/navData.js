@@ -1,11 +1,11 @@
 const navData = [
   {
     name: "About",
-    path: "/about",
+    path: "/about/",
   },
   {
     name: "Blog",
-    path: "/blog",
+    path: "/blog/",
   },
 ];
 export default navData;
