@@ -1,4 +1,7 @@
 ---
+// library import
+//import {Image,Picture} from "@astrojs/image/components";
+
 // component inports
 import Links from "../components/Links.astro";
 import Mainlayout from "../layouts/mainLayout.astro";
@@ -7,7 +10,14 @@ const pageTitle="About page"
 ---
 <Mainlayout title="About Page" description="This the ABOUT page">
   <section class="container about" aria-label="About Me">
-    <img src="/images/headshot.jpg" alt ="My headshot" width="200" height="330" />
+    <img 
+    src="/images/headshot.jpg" 
+    alt ="My headshot" 
+    width="200" 
+    height="330"
+    format="avif"
+    fit="cover"
+    />
     <div class="content"> 
       <h1 class="h1">My Blog</h1>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet, deleniti. Provident dignissimos unde error. Aliquam, voluptatem. Voluptatibus voluptatum facere aliquam, doloremque asperiores necessitatibus quo. Libero aut, facilis reiciendis debitis nesciunt eligendi dignissimos voluptate veniam aliquid. Temporibus earum culpa eligendi cum!</p>
