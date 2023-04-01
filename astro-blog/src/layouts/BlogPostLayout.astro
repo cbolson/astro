@@ -1,25 +1,24 @@
 ---
-
 // component import
-import PostHeader from '../components/PostHeader.astro';
-import MainLayout from './mainLayout.astro';
+import PostHeader from "../components/PostHeader.astro";
+import CategoryCloud from "../components/CategoryCloud.astro";
+import MainLayout from "./mainLayout.astro";
 
 const { frontmatter } = Astro.props;
-const {title, description,date,category, author,image} = frontmatter;
+const { title, description, date, category, author, image } = frontmatter;
 ---
+
 <MainLayout {title} {description}>
-<PostHeader 
-{title} 
-{description}
-{date}
-{category}
-{author}
-{image}
-/>
-<div class="post-content">
-    <div class="content">
-        <slot />
+  <PostHeader {title} {description} {date} {category} {author} {image} />
+  <div class='post-content'>
+    <div class='content'>
+      <slot />
     </div>
-    <div class="sidebar"></div>
-</div>
+    <div class='sidebar'>
+      <aside class='container' aria-label='Blog Categories'>
+        <h2 class='h3'>Blog Categories</h2>
+        <CategoryCloud showCount={true} />
+      </aside>
+    </div>
+  </div>
 </MainLayout>

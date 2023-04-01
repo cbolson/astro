@@ -55,7 +55,7 @@ export function formatBlogPosts(
   if (typeof limit === "number") {
     return filteredPosts.slice(0, limit);
   }
-
+  //console.log(filteredPosts[0].url);
   // return list of filtered, sorted and limited posts
   return filteredPosts;
 }
