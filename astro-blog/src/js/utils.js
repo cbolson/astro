@@ -22,14 +22,23 @@ export function formatBlogPosts(
     filterdOutFuturePosts = true,
     sortByDate = true,
     limit = undefined,
+    filterByCat = "",
+    filterByAuthor = "",
   } = {}
 ) {
   const filteredPosts = posts.reduce((acc, post) => {
-    const { date, draft } = post.frontmatter;
+    const { date, draft, category, author } = post.frontmatter;
     // filter out drafts
     if (filterdOutDrafts && draft) return acc;
-    // future posts
+
+    // filter future posts
     if (filterdOutFuturePosts && new Date(date) > new Date()) return acc;
+
+    // filter by category
+    if (filterByCat !== "" && slugify(category) !== filterByCat) return acc;
+
+    // filter by author
+    if (filterByAuthor !== "" && slugify(author) !== filterByAuthor) return acc;
 
     acc.push(post);
     return acc;
