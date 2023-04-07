@@ -59,3 +59,6 @@ export function formatBlogPosts(
   // return list of filtered, sorted and limited posts
   return filteredPosts;
 }
+
+const arr = [1, 2, 3];
+console.log(arr);

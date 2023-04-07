@@ -9,6 +9,7 @@ import CategoryCloud from "../../components/CategoryCloud.astro";
 import { formatBlogPosts } from "../../js/utils";
 
 export async function getStaticPaths({ paginate }) {
+  console.log("get posts - list & pagination");
   const allPosts = await Astro.glob("./*.md");
   const formattedPosts = formatBlogPosts(allPosts);
 
@@ -18,9 +19,7 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props;
-console.log(page);
 ---
-
 
 <Mainlayout
   title={`${page.total} Posts`}

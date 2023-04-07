@@ -3,9 +3,26 @@
 import PostHeader from "../components/PostHeader.astro";
 import CategoryCloud from "../components/CategoryCloud.astro";
 import MainLayout from "./mainLayout.astro";
+import RelatedPosts from "../components/RelatedPosts.astro";
+
+// iutils import
+import { formatBlogPosts } from "../js/utils";
 
 const { frontmatter } = Astro.props;
 const { title, description, date, category, author, image } = frontmatter;
+
+// get all posts to then filter to show same cat
+console.log("get posts - similar");
+const allPosts = await Astro.glob("../pages/blog/*.md");
+const formattedPosts = formatBlogPosts(allPosts, {
+  sortByDate: false,
+});
+
+const relatedPosts = formattedPosts.filter(
+  (post) =>
+    post.frontmatter.category.toLowerCase() === category.toLowerCase() &&
+    post.frontmatter.title != title
+);
 ---
 
 <MainLayout {title} {description}>
@@ -19,6 +36,14 @@ const { title, description, date, category, author, image } = frontmatter;
         <h2 class='h3'>Blog Categories</h2>
         <CategoryCloud showCount={true} />
       </aside>
+      {
+        relatedPosts.length > 0 && (
+          <aside class='container' aria-label='Related Posts'>
+            <h2 class='h3'>Related Posts</h2>
+            <RelatedPosts {relatedPosts} />
+          </aside>
+        )
+      }
     </div>
   </div>
 </MainLayout>
