@@ -60,5 +60,5 @@ export function formatBlogPosts(
   return filteredPosts;
 }
 
-const arr = [1, 2, 3];
-console.log(arr);
+//const arr = [1, 2, 3];
+//console.log(arr);
