@@ -25,7 +25,7 @@ const relatedPosts = formattedPosts.filter(
 );
 ---
 
-<MainLayout {title} {description}>
+<MainLayout {title} {description} image={frontmatter.image} {frontmatter} rotos={frontmatter.robots}>
   <PostHeader {title} {description} {date} {category} {author} {image} />
   <div class='post-content'>
     <div class='content'>

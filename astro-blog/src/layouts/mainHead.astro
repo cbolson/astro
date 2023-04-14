@@ -1,5 +1,6 @@
 ---
-const {title,description} = Astro.props
+import Seo from "../components/SEO.astro";
+const {title, description, image, frontmatter, robots} = Astro.props
 ---
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,13 @@ const {title,description} = Astro.props
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astro - {title }</title>
+   <Seo
+    {title}
+  {description}
+  url = {Astro.url}
+  {image}
+  {frontmatter}
+  {robots}/>
     <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
